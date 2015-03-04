@@ -76,7 +76,10 @@ public class ListeningDataThread extends Thread {
 			Thread.sleep(5000);
 			int i = inputStream.read(data);
 			if (i > 0) {
-				System.out.println("成功收到指令返回值:" + new String(data, 0, i));
+				String comData = null;// 接收串口数据
+				comData = new String(data, 0, i);
+				System.out.println("成功收到指令返回值:" + comData);
+				
 				Map<String, Object> params = new HashMap<String, Object>();// 将从串口接收的数据进行解析，生成温度和湿度并保存到数据库中
 				params.put("temperature", 32.3);// 保存计算出的温度
 				params.put("humidity", 47.5);// 保存计算出的湿度
